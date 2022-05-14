@@ -70,7 +70,8 @@ public class PersistenceConfig implements TransactionManagementConfigurer{ //<tx
         
 		return factoryBean;
 	}
-	
+
+
 	@Bean
 	public SqlSessionTemplate getSqlSesionTemplate() throws Exception{
 		SqlSessionTemplate sqlSession = new SqlSessionTemplate( getFactoryBean().getObject() );
@@ -78,7 +79,8 @@ public class PersistenceConfig implements TransactionManagementConfigurer{ //<tx
 		return sqlSession;
 		
 	}
-	
+
+
 	/**
 	 * interface기반의 Mapper 등록 
 	 * */
@@ -107,14 +109,16 @@ public class PersistenceConfig implements TransactionManagementConfigurer{ //<tx
 		
 		return dataSource;
 	}
-	
+
+
 	@Bean
 	public DataSourceTransactionManager getTransactionManager() {
 		DataSourceTransactionManager transactionManager = new DataSourceTransactionManager();
 		transactionManager.setDataSource( getBasicDataSource() ); //DataSource
 		return transactionManager;
 	}
-	
+
+
 	@Override
 	public TransactionManager annotationDrivenTransactionManager() {
 		return getTransactionManager();
