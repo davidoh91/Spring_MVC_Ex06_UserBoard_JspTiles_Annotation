@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+	
+<tiles-definitions>
+ <definition name="layout" template="/WEB-INF/tiles/layout.jsp">
+   <put-attribute name="header" value="/WEB-INF/tiles/header.jsp"/>
+   <put-attribute name="footer" value="/WEB-INF/tiles/footer.jsp"/>
+ </definition>
+ 
+ 
+ <!-- Controller에서 리턴의하는 뷰의 정보에 따라 화면구성을 처리한다. 
+       ex) 뷰의정보가 board/list, board/read , user/join ...
+            결론 : */* 인경우에...
+ -->
+ <definition name="*/*" extends="layout">
+   <put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp"/>
+ </definition>
+
+<!--<definition extends="layout" name="user/*">-->
+<!--    <put-attribute name="content" value="/WEB-INF/views/user/{1}.jsp"/>-->
+<!--</definition> -->
+
+</tiles-definitions>	
+

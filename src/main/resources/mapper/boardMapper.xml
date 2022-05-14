@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boardMapper">
+ 
+ <!-- 전체검색 또는 모델번호 검색하기 -->
+ <select id="selectAll" resultType="electronicsDTO" parameterType="string">
+   select * from electronics 
+   <where>
+     <if test="_parameter!=null">
+        model_num = #{_parameter}
+     </if>
+   </where>  
+   order by writeday desc
+ </select>
+ 
+ 
+ <insert id="insert" parameterType="electronicsDTO">
+    insert into Electronics 
+    values(#{modelNum},#{modelName},#{price},#{description},#{password},sysdate,0,#{fname},#{fsize})
+ </insert>
+ 
+ <!-- 조회수 증가 -->
+ <update id="readnumUpdate" parameterType="string">
+     update Electronics
+     set readnum=readnum+1
+     where model_num=#{_parameter}
+ </update>
+ 
+ <!-- 수정하기 -->
+ <update id="update" parameterType="electronicsDTO">
+    update Electronics
+    set model_name=#{modelName} , price=#{price}, description=#{description}
+    where model_num=#{modelNum}
+ </update>
+ 
+ <!-- 삭제하기 -->
+ <delete id="delete" parameterType="map">
+    delete from Electronics
+    where model_num=#{modelNum} and password=#{password}
+ </delete>
+
+ 
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
