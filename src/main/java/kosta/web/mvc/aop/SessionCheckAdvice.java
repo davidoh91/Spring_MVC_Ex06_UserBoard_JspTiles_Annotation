@@ -16,6 +16,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
  *   : 만약 인증을 안했다면 오류페이지로 이동 할수 있도록한다. 
  * */
 
+
 @Service // 생성
 @Aspect
 public class SessionCheckAdvice {
@@ -31,7 +32,8 @@ public class SessionCheckAdvice {
 		if(session ==null || session.getAttribute("loginUser") == null) {
 			throw new RuntimeException("로그인하고 이용해주세요.");
 		}
-		
+
+
 	}*/
 	///////////////////////////////////////////////////////////////////
 	/**
